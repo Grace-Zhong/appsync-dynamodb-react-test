@@ -27,3 +27,7 @@ type Like @model {
 	post: Post @connection(name: "PostLikes")
 }
 ```
+```
+GraphQL endpoint: https://xcxw4l5ozja67kprhenncqcb3y.appsync-api.ap-southeast-2.amazonaws.com/graphql
+GraphQL API KEY: da2-x7ilhskwbzcpxmlzihghsanf7e
+```
