@@ -18,6 +18,16 @@ export const onCreatePost = /* GraphQL */ `
         }
         nextToken
       }
+      likes {
+        items {
+          id
+          postID
+          likeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -35,6 +45,16 @@ export const onUpdatePost = /* GraphQL */ `
           id
           postID
           content
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      likes {
+        items {
+          id
+          postID
+          likeID
           createdAt
           updatedAt
         }
@@ -62,6 +82,16 @@ export const onDeletePost = /* GraphQL */ `
         }
         nextToken
       }
+      likes {
+        items {
+          id
+          postID
+          likeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -78,6 +108,9 @@ export const onCreateComment = /* GraphQL */ `
         rating
         status
         comments {
+          nextToken
+        }
+        likes {
           nextToken
         }
         createdAt
@@ -102,6 +135,9 @@ export const onUpdateComment = /* GraphQL */ `
         comments {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -124,10 +160,187 @@ export const onDeleteComment = /* GraphQL */ `
         comments {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLike = /* GraphQL */ `
+  subscription OnCreateLike {
+    onCreateLike {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        items {
+          id
+          postID
+          likeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLike = /* GraphQL */ `
+  subscription OnUpdateLike {
+    onUpdateLike {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        items {
+          id
+          postID
+          likeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLike = /* GraphQL */ `
+  subscription OnDeleteLike {
+    onDeleteLike {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        items {
+          id
+          postID
+          likeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreatePostLikers = /* GraphQL */ `
+  subscription OnCreatePostLikers {
+    onCreatePostLikers {
+      id
+      postID
+      likeID
+      post {
+        id
+        title
+        rating
+        status
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      like {
+        id
+        numberLikes
+        likeOwnerId
+        likeOwnerUsername
+        post {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdatePostLikers = /* GraphQL */ `
+  subscription OnUpdatePostLikers {
+    onUpdatePostLikers {
+      id
+      postID
+      likeID
+      post {
+        id
+        title
+        rating
+        status
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      like {
+        id
+        numberLikes
+        likeOwnerId
+        likeOwnerUsername
+        post {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeletePostLikers = /* GraphQL */ `
+  subscription OnDeletePostLikers {
+    onDeletePostLikers {
+      id
+      postID
+      likeID
+      post {
+        id
+        title
+        rating
+        status
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      like {
+        id
+        numberLikes
+        likeOwnerId
+        likeOwnerUsername
+        post {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

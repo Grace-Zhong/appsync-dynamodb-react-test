@@ -1,4 +1,4 @@
-```
+```js
 type Post @model {
 	id: ID!
 	postOwnerId: String!

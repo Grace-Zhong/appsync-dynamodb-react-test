@@ -14,6 +14,7 @@ type Post @model {
   status: PostStatus!
   # New field with @hasMany
   comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
+  likes: [Like] @manyToMany(relationName: "PostLikers")
 }
 
 # New model
@@ -22,4 +23,12 @@ type Comment @model {
   postID: ID! @index(name: "byPost", sortKeyFields: ["content"])
   post: Post! @belongsTo(fields: ["postID"])
   content: String!
+}
+
+type Like @model {
+	id: ID!
+	numberLikes: Int!
+	likeOwnerId: String!
+	likeOwnerUsername: String!
+	post: [Post] @manyToMany(relationName: "PostLikers")
 }
