@@ -9,9 +9,11 @@ enum PostStatus {
 
 type Post @model {
   id: ID!
-  title: String!
-  rating: Int!
-  status: PostStatus!
+  postOwnerId: String!
+	postOwnerUsername: String!
+	postTitle: String!
+	postBody: String!
+	createdAt: String
   # New field with @hasMany
   comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
   likes: [Like] @manyToMany(relationName: "PostLikers")
@@ -21,8 +23,10 @@ type Post @model {
 type Comment @model {
   id: ID!
   postID: ID! @index(name: "byPost", sortKeyFields: ["content"])
+  commentOwnerUsername: String!
   post: Post! @belongsTo(fields: ["postID"])
   content: String!
+  createdAt: String!
 }
 
 type Like @model {
